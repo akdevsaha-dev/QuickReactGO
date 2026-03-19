@@ -1,0 +1,16 @@
+{
+  "name": "create-reactgo-app",
+  "version": "1.0.0",
+  "description": "A cli to bootstarp a React + Go project",
+  "main": "bin/cli.js",
+  "bin": {
+    "create-reactgo-app": "./bin/cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs"
+}
