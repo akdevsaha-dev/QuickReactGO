@@ -1,6 +1,7 @@
 package main
 
 import (
+	"log"
 	"net/http"
 
 	"github.com/akdevsaha-dev/create-reactgo-app/backend/routes"
@@ -22,4 +23,7 @@ func main() {
 	}
 
 	router.Run(":8000")
+	if err := router.Run(":8000"); err != nil {
+		log.Fatal("Failed to start server: ", err)
+	}
 }
