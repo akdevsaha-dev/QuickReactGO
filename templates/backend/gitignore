@@ -1,0 +1,44 @@
+# Binary Executables
+# ------------------
+# Ignore the compiled output (replace 'server' with your actual binary name if needed)
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+bin/
+out/
+backend_main
+
+# Dependency Management
+# ---------------------
+# We DO NOT ignore go.mod or go.sum. 
+# We only ignore the vendor folder if you aren't using it.
+# vendor/
+
+# Testing and Coverage
+# --------------------
+*.test
+*.out
+coverage.txt
+
+# Environment Variables
+# ---------------------
+# Never commit secrets!
+.env
+*.env
+.env.local
+
+# IDE and System Files
+# --------------------
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# Optional: Air (Hot Reload)
+# --------------------------
+# If you use the 'air' tool for hot reloading
+tmp/
