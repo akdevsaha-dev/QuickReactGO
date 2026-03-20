@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+
+@layer base {
+    html {
+        width: 100%;
+        scroll-behavior: smooth;
+    }
+
+    body {
+        @apply bg-neutral-900;
+        width: 100%;
+    }
+}
+
+@utility flex-center {
+    @apply flex items-center justify-center
+}
+
+@utility col-center {
+    @apply flex flex-col items-center justify-center
+}
+
+@layer components {
+    #hero {
+        @apply h-screen col-center text-white
+    }
+}
