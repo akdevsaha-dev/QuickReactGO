@@ -72,7 +72,7 @@ async function init() {
     console.log(chalk.white(`\nNext steps to get started:`));
 
     console.log(chalk.cyan(`\n  Step 1: Setup Frontend`));
-    console.log(chalk.white(`${cdPath}cd frontend && npm install`));
+    console.log(chalk.white(`   ${cdPath}cd frontend && npm install`));
 
     console.log(chalk.cyan(`\n  Step 2: Setup Backend`));
     console.log(chalk.white(`    ${cdPath}cd backend && go mod tidy`));
