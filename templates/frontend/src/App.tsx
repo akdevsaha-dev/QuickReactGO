@@ -14,7 +14,7 @@ function App() {
         setMessage(res.data.message);
       } catch (err) {
         console.error(err);
-        setMessage("Error fetching data.");
+        setMessage("Error fetching data, connect to backend.");
       }
     };
     fetchData();
