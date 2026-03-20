@@ -52,6 +52,21 @@ async function init() {
 
     await fs.ensureDir(targetDir);
     await fs.copy(templateDir, targetDir);
+    async function fixGitIgnores(dir) {
+      const files = await fs.readdir(dir);
+      for (const file of files) {
+        const fullPath = path.join(dir, file);
+        const stat = await fs.lstat(fullPath);
+
+        if (stat.isDirectory()) {
+          await fixGitIgnores(fullPath);
+        } else if (file === "gitignore") {
+          await fs.rename(fullPath, path.join(dir, ".gitignore"));
+        }
+      }
+    }
+    console.log(chalk.gray("Configuring project files..."));
+    await fixGitIgnores(targetDir);
     const cdPath = projectName === "." ? "" : `cd ${projectName} && `;
     console.log(chalk.green(`\n✅ Success! Project created at ${targetDir}`));
     console.log(chalk.white(`\nNext steps to get started:`));
