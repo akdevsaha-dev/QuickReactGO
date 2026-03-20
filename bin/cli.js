@@ -15,7 +15,23 @@ async function init() {
     console.log(chalk.yellow("\nOperation cancelled. Bye! 👋"));
     return;
   }
-  const targetDir = path.join(process.cwd(), projectName);
+  const normalizedName = projectName.trim();
+  const cwd = process.cwd();
+  const targetDir = path.resolve(cwd, normalizedName);
+  const relativeTarget = path.relative(cwd, targetDir);
+  if (
+    !relativeTarget ||
+    relativeTarget.startsWith("..") ||
+    path.isAbsolute(relativeTarget)
+  ) {
+    console.error(
+      chalk.red(
+        "\nInvalid project name. Please choose a subdirectory inside the current folder.",
+      ),
+    );
+    process.exitCode = 1;
+    return;
+  }
   const templateDir = path.join(__dirname, "../templates");
   try {
     if (fs.existsSync(targetDir) && fs.readdirSync(targetDir).length > 0) {
