@@ -11,10 +11,15 @@ import (
 
 func main() {
 	router := gin.Default()
-	router.Use(cors.Default())
+	router.Use(cors.New(cors.Config{
+		AllowOrigins:     []string{"http://localhost:5173"},
+		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE", "OPTIONS"},
+		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+		AllowCredentials: true,
+	}))
 	router.GET("/", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
-			"message": "Hello from Go + Gin backend",
+			"message": "Build fullstack apps faster with Go + React.",
 		})
 	})
 	v1 := router.Group("/api/v1")
