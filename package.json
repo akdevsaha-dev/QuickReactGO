@@ -1,6 +1,6 @@
 {
   "name": "create-reactgo-app",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "A cli to bootstarp a React + Go project",
   "main": "bin/cli.js",
   "bin": {
