@@ -36,9 +36,6 @@ services:
       #   Nginx serves the built app on port 80 inside the container
       #   Change this to "5173:80" so the app is accessible at http://localhost:5173
       - "5173:5173"
-    environment:
-      # Internal Docker network URL for backend service
-      - BACKEND_URL=http://backend:8080
     depends_on:
       - backend
 `;
