@@ -9,7 +9,7 @@ function App() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get("http://localhost:8000/");
+        const res = await axios.get("http://localhost:8080/");
         console.log(res.data);
         setMessage(res.data.message);
       } catch (err) {

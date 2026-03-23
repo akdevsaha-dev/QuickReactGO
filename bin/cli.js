@@ -3,6 +3,7 @@ const fs = require("fs-extra");
 const chalk = require("chalk");
 const prompts = require("prompts");
 const path = require("path");
+const { generateDockerFiles } = require("./helpers/docker");
 async function init() {
   console.log(chalk.yellow("\n🚀 Welcome to the React-Go Bundler!\n"));
   const { projectName } = await prompts({
@@ -45,13 +46,24 @@ async function init() {
         console.log(chalk.red("\n✖") + " Operation cancelled.");
         return;
       }
+
       console.log(chalk.gray(`\nCleaning ${projectName}...`));
       await fs.emptyDir(targetDir);
     }
+    const { useDocker } = await prompts({
+      type: "confirm",
+      name: "useDocker",
+      message: "Would you like to set up docker?",
+      initial: true,
+    });
     console.log(chalk.yellow(`\nCreating project in ${targetDir}...`));
 
     await fs.ensureDir(targetDir);
     await fs.copy(templateDir, targetDir);
+
+    if (useDocker) {
+      await generateDockerFiles(targetDir);
+    }
     async function fixGitIgnores(dir) {
       const files = await fs.readdir(dir);
       for (const file of files) {
@@ -71,16 +83,27 @@ async function init() {
     console.log(chalk.green(`\n✅ Success! Project created at ${targetDir}`));
     console.log(chalk.white(`\nNext steps to get started:`));
 
-    console.log(chalk.cyan(`\n  Step 1: Setup Frontend`));
-    console.log(chalk.white(`   ${cdPath}cd frontend && npm install`));
+    if (useDocker) {
+      console.log(chalk.cyan(`  🐳 Run with Docker (Recommended):`));
+      console.log(chalk.white(`   ${cdPath}docker compose up --build\n`));
+      console.log(
+        chalk.gray(`  (Optional) Install local dependencies for your IDE:`),
+      );
+      console.log(chalk.gray(`   cd frontend && npm install`));
+      console.log(chalk.gray(`   cd backend && go mod tidy`));
+    } else {
+      console.log(chalk.cyan(`\n  Step 1: Setup Frontend`));
+      console.log(chalk.white(`   ${cdPath}cd frontend && npm install`));
 
-    console.log(chalk.cyan(`\n  Step 2: Setup Backend`));
-    console.log(chalk.white(`    ${cdPath}cd backend && go mod tidy`));
+      console.log(chalk.cyan(`\n  Step 2: Setup Backend`));
+      console.log(chalk.white(`    ${cdPath}cd backend && go mod tidy`));
 
-    console.log(chalk.cyan(`\n  Step 3: Run the project`));
+      console.log(chalk.cyan(`\n  Step 3: Run the project`));
 
-    console.log(chalk.white(`    # In backend:  go run main.go\n`));
-    console.log(chalk.white(`    # In frontend: npm run dev`));
+      console.log(chalk.white(`    # In backend:  go run main.go\n`));
+      console.log(chalk.white(`    # In frontend: npm run dev`));
+    }
+    console.log("");
   } catch (err) {
     console.error(chalk.red("\nSomething went wrong:"), err);
   }

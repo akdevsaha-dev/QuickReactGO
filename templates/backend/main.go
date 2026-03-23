@@ -27,8 +27,7 @@ func main() {
 		routes.SetupHealthRoute(v1)
 	}
 
-	router.Run(":8000")
-	if err := router.Run(":8000"); err != nil {
+	if err := router.Run(":8080"); err != nil {
 		log.Fatal("Failed to start server: ", err)
 	}
 }
