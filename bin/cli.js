@@ -91,17 +91,19 @@ async function init() {
       );
       console.log(chalk.gray(`   cd frontend && npm install`));
       console.log(chalk.gray(`   cd backend && go mod tidy`));
+    } else {
+      console.log(chalk.cyan(`\n  Step 1: Setup Frontend`));
+      console.log(chalk.white(`   ${cdPath}cd frontend && npm install`));
+
+      console.log(chalk.cyan(`\n  Step 2: Setup Backend`));
+      console.log(chalk.white(`    ${cdPath}cd backend && go mod tidy`));
+
+      console.log(chalk.cyan(`\n  Step 3: Run the project`));
+
+      console.log(chalk.white(`    # In backend:  go run main.go\n`));
+      console.log(chalk.white(`    # In frontend: npm run dev`));
     }
-    console.log(chalk.cyan(`\n  Step 1: Setup Frontend`));
-    console.log(chalk.white(`   ${cdPath}cd frontend && npm install`));
-
-    console.log(chalk.cyan(`\n  Step 2: Setup Backend`));
-    console.log(chalk.white(`    ${cdPath}cd backend && go mod tidy`));
-
-    console.log(chalk.cyan(`\n  Step 3: Run the project`));
-
-    console.log(chalk.white(`    # In backend:  go run main.go\n`));
-    console.log(chalk.white(`    # In frontend: npm run dev`));
+    console.log("");
   } catch (err) {
     console.error(chalk.red("\nSomething went wrong:"), err);
   }
