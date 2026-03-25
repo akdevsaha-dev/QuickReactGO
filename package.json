@@ -9,8 +9,18 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "golang",
+    "docker",
+    "scaffold",
+    "cli",
+    "boilerplate",
+    "fullstack",
+    "go",
+    "starter"
+  ],
+  "author": "akdevsaha-dev",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
