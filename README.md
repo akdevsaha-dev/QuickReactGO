@@ -68,7 +68,7 @@ my-app/
 │   ├── Dockerfile.dev    # Development Docker configuration (with Air)
 │   ├── go.mod            # Go module definition
 │   └── main.go           # Go application entrypoint
-├── frontend/
+├── frontend-react/       # React frontend code
 │   ├── public/           # Static assets
 │   ├── src/              # React components & application state
 │   ├── Dockerfile        # Production Nginx frontend build configuration

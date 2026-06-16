@@ -1,7 +1,7 @@
 {
   "name": "create-reactgo-app",
-  "version": "2.0.1",
-  "description": "A cli to bootstarp a React + Go project",
+  "version": "3.0.0",
+  "description": "A CLI to bootstrap a React + Go project",
   "main": "bin/cli.js",
   "bin": {
     "create-reactgo-app": "./bin/cli.js"
@@ -11,21 +11,25 @@
   },
   "keywords": [
     "react",
-    "golang",
     "docker",
     "scaffold",
     "cli",
     "boilerplate",
     "fullstack",
     "go",
-    "starter"
+    "CLI",
+    "template",
+    "setup",
+    "starter",
+    "next",
+    "golang"
   ],
   "author": "akdevsaha-dev",
   "license": "MIT",
   "type": "commonjs",
   "dependencies": {
     "chalk": "^4.1.2",
-    "fs-extra": "^11.3.4",
+    "fs-extra": "^11.3.5",
     "prompts": "^2.4.2"
   }
 }

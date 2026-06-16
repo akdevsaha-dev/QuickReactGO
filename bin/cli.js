@@ -61,6 +61,16 @@ async function init() {
     await fs.ensureDir(targetDir);
     await fs.copy(templateDir, targetDir);
 
+    const oldFrontendPath = path.join(targetDir, "frontend-react")
+    const newFrontendPath = path.join(targetDir, "frontend")
+
+
+    if (await fs.pathExists(oldFrontendPath)) {
+
+      await fs.move(oldFrontendPath, newFrontendPath);
+
+    }
+
     if (useDocker) {
       await generateDockerFiles(targetDir);
     }
