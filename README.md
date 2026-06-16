@@ -1,178 +1,149 @@
-🚀 create-reactgo-app
+# 🚀 create-reactgo-app
 
-A powerful CLI to bootstrap a fullstack React + Go application in seconds.
+A powerful, developer-first CLI to bootstrap production-ready, fullstack **React + Go** applications in seconds.
 
-⸻
+[![npm version](https://img.shields.io/npm/v/create-reactgo-app.svg?style=flat-square&logo=npm)](https://www.npmjs.com/package/create-reactgo-app)
+[![npm downloads](https://img.shields.io/npm/dm/create-reactgo-app.svg?style=flat-square&logo=npm)](https://www.npmjs.com/package/create-reactgo-app)
+[![license](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](CONTRIBUTING.md)
 
-✨ Overview
+---
 
-create-reactgo-app helps you skip repetitive setup and instantly generate a production-ready project structure with:
-• ⚛️ React frontend
-• 🐹 Go backend
-• 📁 Clean project structure
-• ⚡ Ready-to-run setup
+## ✨ Overview
 
-No more manual boilerplate — just one command and you’re ready to build.
+`create-reactgo-app` helps you skip repetitive boilerplate and configuration. It instantly provisions a scalable, container-friendly, fullstack ecosystem featuring:
 
-⸻
+*   ⚛️ **Modern React Frontend** (Vite, React 19, TypeScript, TailwindCSS v4)
+*   🐹 **High-Performance Go Backend** (Gin Gonic Web Framework, CORS Pre-configured)
+*   🐳 **Containerization Ready** (Docker Compose with Air Hot-Reloading for Go & Vite HMR for React)
+*   📂 **Clean Project Structure** follows industry best-practices
 
-📦 Installation
+---
 
-You don’t need to install anything globally.
+## 🤔 Why This Exists
 
-Run directly using:
+Setting up a fullstack project with React + Go sounds simple… until you actually do it. 
 
-```
-npx create-reactgo-app
-```
+Every time you build a new app, you repeat the same ritual:
+1. Create separate folders for frontend and backend.
+2. Initialize React, Vite, TypeScript, and install UI dependencies.
+3. Configure TailwindCSS (and resolve version-specific configuration issues).
+4. Set up a Go server, install Gin, configure CORS, and map routes.
+5. Create `.gitignore`, configure Dockerfiles, and compose configurations for development and production.
 
-⸻
+By the time you're done, you've spent **30–60 minutes** copy-pasting code and resolving setup friction, instead of writing your product's core logic.
 
-⚡ Usage
+`create-reactgo-app` was built to eliminate that friction:
+> **Run one command and start building immediately.**
 
-Create a new project
+---
 
-```
+## 📦 Quick Start
+
+No global installation is required. Run the CLI directly using `npx`:
+
+```bash
 npx create-reactgo-app my-app
 ```
 
-Or use current directory
+Or initialize inside the current directory:
 
-```
+```bash
 npx create-reactgo-app .
 ```
 
-📁 Project Structure
+---
 
-```
+## 📂 Generated Project Structure
+
+The generated boilerplate provides a clean separation of concerns:
+
+```text
 my-app/
-├── backend/        # Go server
-├── frontend/       # React app
-├── .gitignore
+├── backend/
+│   ├── controllers/      # Route controllers (handlers)
+│   ├── routes/           # API routes configuration
+│   ├── services/         # Business logic
+│   ├── Dockerfile        # Production Docker configuration
+│   ├── Dockerfile.dev    # Development Docker configuration (with Air)
+│   ├── go.mod            # Go module definition
+│   └── main.go           # Go application entrypoint
+├── frontend/
+│   ├── public/           # Static assets
+│   ├── src/              # React components & application state
+│   ├── Dockerfile        # Production Nginx frontend build configuration
+│   ├── Dockerfile.dev    # Development Vite server configuration
+│   ├── package.json      # Node dependency layout
+│   └── vite.config.ts    # Vite configurations
+├── docker-compose.yml    # Development multi-container environment
 └── README.md
 ```
 
-🧠 How It Works
+---
 
-1.  Prompts for a project name
-2.  Creates a directory (or uses current one)
-3.  Copies a prebuilt template
-4.  Sets up your fullstack environment
+## 🚀 Running Your Generated Project
 
-⸻
+Once the project is scaffolded, navigate to your new directory (`cd my-app`) and choose one of the running environments:
 
-🛠️ Features
+### Method A: Docker Compose (Recommended)
 
-- ✅ Interactive CLI prompts
-- ✅ Smart directory handling (. support)
-- ✅ Fast and minimal setup
-- ✅ Cross-platform support
+Run the full stack with hot-reloading for both Go (using Air) and React (Vite HMR):
 
-<br/>
-
-🚀 Getting Started
-
-After creating your project:
-
+```bash
+docker compose up --build
 ```
-cd my-app
-```
+*   Frontend will be live at: [http://localhost:5173](http://localhost:5173)
+*   Backend API will be live at: [http://localhost:8080](http://localhost:8080)
 
-Start backend
+---
 
-```
+### Method B: Manual Setup
+
+If you prefer running the processes bare-metal:
+
+#### 1. Start Go Backend
+```bash
 cd backend
+go mod tidy
 go run main.go
 ```
 
-Start frontend
-
-```
+#### 2. Start React Frontend
+```bash
 cd frontend
 npm install
 npm run dev
 ```
 
-<br/>
+---
 
-🤝 Contributing
+## 🛠️ Features Breakdown
 
-Contributions are welcome!
+*   **Interactive Setup Prompt:** Customizes settings such as directory overwrites and optional Docker setup automatically.
+*   **Zero Configuration Docker Development:** Development containers utilize `Air` for live Go builds and bind volumes to persist your local updates directly into the container.
+*   **Robust CORS Config:** Gin server is pre-configured with CORS policies, allowing local React components (`http://localhost:5173`) to call API endpoints (`http://localhost:8080`) out of the box.
+*   **Tailwind v4 & React 19:** Ships with the latest versions of frontend libraries pre-packaged.
 
-1. Fork the repo
-2. Create a new branch
-3. Make your changes
-4. Submit a PR
+---
 
-<br/>
+## 🤝 Contributing
 
-📜 License
+Contributions make the open-source community an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-This project is licensed under the MIT License.
+Please refer to the [Contributing Guide](CONTRIBUTING.md) (`CONTRIBUTING.md`) for detailed instructions on:
+1. Setting up the repository locally.
+2. Running the CLI tool for local testing.
+3. Making changes to template files.
+4. Formatting and pull request standards.
 
-<br/>
+---
 
-🤔 Why This Exists
+## 📜 License
 
-Setting up a fullstack project with React + Go sounds simple… until you actually do it.
+Distributed under the MIT License. See `LICENSE` for more information.
 
-You start with an idea, open your terminal, and then:
+---
 
-- Create separate folders for frontend and backend
-- Initialize React manually
-- Set up a Go server from scratch
-- Configure routing, ports, and structure
-- Add .gitignore, scripts, and basic boilerplate
+## 👨‍💻 Author
 
-By the time you’re done, you’ve spent 30–60 minutes…
-and written almost no actual product code.
-
-<br/>
-
-⚠️ The Real Problem
-
-The issue isn’t complexity — it’s repetition.
-
-Every project starts the same way:
--	same folder structure
--	same setup steps
--	same boilerplate
-
-Yet we keep doing it manually, over and over again.
-
-<br/>
-
-💡 The Idea
-
-create-reactgo-app was built to eliminate that friction.
-
-Instead of wasting time on setup, you should be able to:
-
-> Run one command and start building immediately.
-
-<br/>
-<br/>
-
-🚀 The Solution
-
-This CLI automates the entire setup process:
--	Instantly scaffolds a fullstack project
--	Provides a clean, scalable structure
--	Removes repetitive boilerplate work
--	Lets you focus on what actually matters — building your idea
-
-<br/>
-🌱 Bigger Vision
-
-This is just the beginning.
-
-The long-term goal is to evolve this into a developer-friendly toolkit that:
--	speeds up fullstack development
--	enforces good structure by default
--	helps developers ship faster with confidence
-
-<br/>
-<br/>
-👨‍💻 Author
-
-Built with ❤️ by Akdev
+Built with ❤️ by [Akdev](https://github.com/akdevsaha-dev)
